@@ -3,16 +3,7 @@ services:
     name: moltbot
     runtime: docker
     plan: free
-    
-    # ✅ 改用 overrideCommand（Docker 專用）
-    overrideCommand:
-      - moltbot
-      - gateway
-      - --port
-      - "10000"
-    
     healthCheckPath: /health
-    
     envVars:
       - key: PORT
         value: "10000"
