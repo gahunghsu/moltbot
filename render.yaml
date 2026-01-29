@@ -3,15 +3,20 @@ services:
     name: moltbot
     runtime: docker
     plan: free
+    
+    # ✅ 添加啟動命令 - 這是關鍵！
+    startCommand: moltbot gateway --port $PORT
+    
     healthCheckPath: /health
+    
     envVars:
       - key: PORT
-        value: "8080"
+        value: "10000"  # ✅ 改為 Render 預設的 10000
       - key: SETUP_PASSWORD
         sync: false
       - key: CLAWDBOT_STATE_DIR
-        value: /data/.clawdbot
+        value: /tmp/.clawdbot
       - key: CLAWDBOT_WORKSPACE_DIR
-        value: /data/workspace
+        value: /tmp/workspace
       - key: CLAWDBOT_GATEWAY_TOKEN
         generateValue: true
